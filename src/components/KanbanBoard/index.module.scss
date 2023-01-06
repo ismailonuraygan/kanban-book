@@ -1,0 +1,6 @@
+@use "../../styles/variables/index" as v;
+.wrapper {
+  background-color: v.$kanbanBoard-bg;
+  height: calc(100vh - 60px);
+  width: 100vw;
+}

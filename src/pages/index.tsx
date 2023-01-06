@@ -14,8 +14,8 @@ export default function Home() {
         <meta name="description" content="producter" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* Header */}
-      {/* Kanban Board */}
+      <Header />
+      <KanbanBoard />
     </>
   )
 }
