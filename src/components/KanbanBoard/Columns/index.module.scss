@@ -1,0 +1,26 @@
+@use "../../../styles/variables/index" as v;
+
+.columnsWrapper {
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+  background-color: white;
+  padding: 16px;
+  border-radius: 8px;
+  width: 300px;
+  gap: 8px;
+}
+
+.columnsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  h1 {
+    color: darkgray;
+  }
+  .icon {
+    color: darkgray;
+    cursor: pointer;
+  }
+}
