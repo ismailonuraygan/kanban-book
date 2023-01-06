@@ -1,0 +1,50 @@
+@use "../../../../styles/variables/index" as v;
+.cardWrapper {
+  background-color: v.$card-bg;
+  padding: 8px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.cardHeader {
+  white-space: normal;
+  h1 {
+    color: v.$card-header;
+  }
+}
+.cardContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  p {
+    font-size: 10px;
+    color: v.$content-color;
+    line-height: 12px;
+  }
+}
+.editions {
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 16px;
+  border-radius: 4px;
+  background-color: v.$editions-bg;
+  color: beige;
+  font-weight: 100;
+}
+
+.cardFooter {
+  display: flex;
+  gap: 16px;
+}
+
+.pages,
+.readTime {
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  gap: 4px;
+  color: v.$content-color;
+}
