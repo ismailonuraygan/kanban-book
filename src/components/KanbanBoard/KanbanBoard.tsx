@@ -7,6 +7,7 @@ import { MoonLoader } from "react-spinners";
 
 const KanbanBoard = () => {
   const [authorId, setAuthorId] = useState("OL26320A");
+  console.log(authorId);
   const [transformedBook, setTransformedBook] = useState({});
   const [isLoading, setLoading] = useState(true);
 
@@ -14,7 +15,7 @@ const KanbanBoard = () => {
     const response = await getAuthor(authorId);
     const newDoc = transformKanban(response);
     /* console.log(newDoc, "newDoc") */
-    console.log(response, "pure");
+    /* console.log(response, "pure"); */
     /* console.log(data); */
     setTransformedBook(newDoc);
     setLoading(false);
@@ -22,8 +23,19 @@ const KanbanBoard = () => {
     /* console.log(transformedBook, "abc"); */
   }
 
-  useEffect(() => {
+  function handleSubmit(e) {
+    e.preventDefault();
+    setLoading(!isLoading);
     getBooks();
+    setLoading(!isLoading);
+  }
+
+  useEffect(() => {
+    try {
+      getBooks();
+    } catch (err) {
+      console.log(err);
+    }
   }, []);
 
   return (
@@ -31,7 +43,7 @@ const KanbanBoard = () => {
       <div className={styles.formWrapper}>
         <h1>Lorem Board</h1>
         <h4>books of</h4>
-        <form action="" className={styles.form}>
+        <form onSubmit={handleSubmit} className={styles.form}>
           <input
             type="text"
             placeholder="Enter Author Id"
