@@ -5,24 +5,52 @@
   border-radius: 4px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+}
+.titleClose {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-right: 4px;
+}
+.bodyOpen {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 300ms ease;
 }
 .cardHeader {
-  white-space: normal;
-  h1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  div {
     color: v.$card-header;
+    text-align: start;
   }
 }
 .cardContent {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 12px 0;
   p {
     font-size: 10px;
     color: v.$content-color;
     line-height: 12px;
   }
 }
+
+.body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 300ms ease;
+}
+
+.content {
+  overflow: hidden;
+}
+
 .editions {
   font-size: 10px;
   display: flex;
