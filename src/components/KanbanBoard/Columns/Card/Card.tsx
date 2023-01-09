@@ -15,10 +15,10 @@ const Card = ({ book }) => {
       <button className={styles.cardHeader} onClick={() => handleClick()}>
         <div className={open ? styles.titleOpen : styles.titleClose}>
           {book.title}
-          <span>
+        </div>
+          <span className={open ? styles.iconOpen : styles.iconClose}>
             <ExpandMoreOutlinedIcon />
           </span>
-        </div>
       </button>
       <div className={open ? styles.bodyOpen : styles.body}>
         <div className={styles.content}>

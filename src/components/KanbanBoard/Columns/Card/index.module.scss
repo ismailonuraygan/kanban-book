@@ -6,11 +6,19 @@
   display: flex;
   flex-direction: column;
 }
+.titleOpen{
+  display: flex;
+}
 .titleClose {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin-right: 4px;
+}
+
+.iconClose{
+  transform: rotate(-90deg);
+  transition: transform 300ms ease;
 }
 .bodyOpen {
   display: grid;
@@ -19,7 +27,6 @@
 }
 .cardHeader {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   width: 100%;
   border: none;
