@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import styles from "./index.module.scss";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import LayersOutlinedIcon from "@mui/icons-material/LayersOutlined";
+import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 
 const Card = ({ book }) => {
   const [open, setOpen] = useState(true);
@@ -12,6 +15,9 @@ const Card = ({ book }) => {
       <button className={styles.cardHeader} onClick={() => handleClick()}>
         <div className={open ? styles.titleOpen : styles.titleClose}>
           {book.title}
+          <span>
+            <ExpandMoreOutlinedIcon />
+          </span>
         </div>
       </button>
       <div className={open ? styles.bodyOpen : styles.body}>
@@ -22,9 +28,11 @@ const Card = ({ book }) => {
           </div>
           <div className={styles.cardFooter}>
             <div className={styles.pages}>
+              <LayersOutlinedIcon style={{ width: "14px" }} />
               <p>{book.number_of_pages_median} pages</p>
             </div>
             <div className={styles.readTime}>
+              <AccessTimeIcon style={{ width: "14px" }} />
               <p>32 hours read time</p>
             </div>
           </div>
