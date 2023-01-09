@@ -34,7 +34,7 @@ const KanbanBoard = () => {
     try {
       getBooks();
     } catch (err) {
-      console.log(err);
+      throw new Error("There is a error :" + err);
     }
   }, []);
 
