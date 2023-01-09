@@ -3,10 +3,12 @@ import Columns from "./Columns/Columns";
 import styles from "./index.module.scss";
 import { transformKanban } from "../../utils/utilities";
 import { getAuthor } from "../../pages/api";
+import { MoonLoader } from "react-spinners";
 
 const KanbanBoard = () => {
   const [authorId, setAuthorId] = useState("OL26320A");
   const [transformedBook, setTransformedBook] = useState({});
+  const [isLoading, setLoading] = useState(true);
 
   async function getBooks() {
     const response = await getAuthor(authorId);
@@ -15,6 +17,7 @@ const KanbanBoard = () => {
     console.log(response, "pure");
     /* console.log(data); */
     setTransformedBook(newDoc);
+    setLoading(false);
 
     /* console.log(transformedBook, "abc"); */
   }
@@ -36,7 +39,10 @@ const KanbanBoard = () => {
             onChange={(e) => setAuthorId(e.target.value)}
           />
           <button>submit</button>
-          
+          <div className={isLoading ? styles.loading : styles.notLoading}>
+            <MoonLoader color="black" size={20} />
+            Loading...
+          </div>
         </form>
       </div>
       <div className={styles.wrapper}>
