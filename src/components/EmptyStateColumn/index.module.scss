@@ -1,0 +1,35 @@
+.emptyStateContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    p {
+      font-size: 24px;
+    }
+  }
+  
+  .emptyStateCard {
+    width: 200px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgba(0, 0, 0, 0.11);
+    padding: 12px;
+  }
+  
+  .firstRow {
+    background-color: rgba(0, 0, 0, 0.15);
+    padding: 10px;
+  }
+  
+  .secondRow {
+    background-color: rgba(0, 0, 0, 0.15);
+    padding: 10px;
+  }
+  .thirdRow {
+    background-color: rgba(0, 0, 0, 0.15);
+    padding: 10px;
+  }
