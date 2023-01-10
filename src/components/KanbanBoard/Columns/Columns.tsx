@@ -5,12 +5,13 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { ColumnsProps } from "../../../../types/type";
 
 const Columns: FC<ColumnsProps> = ({ transformedBook, year }) => {
+  const columnColorCode: string = String(Math.floor(10^6 + Math.random() * 900000));
   console.log(transformedBook);
   return (
     <div className={styles.columnsWrapper}>
       <div
         className={styles.color}
-        style={{ backgroundColor: `#${year}` }}
+        style={{ backgroundColor: `#${columnColorCode}` }}
       ></div>
       <div className={styles.columnsHeader}>
         <h1>{year}</h1>
