@@ -1,14 +1,14 @@
-export const transformKanban = (docs) => {
+import { Book } from "../../types/type";
+
+export const transformKanban = (docs: Book[]) => {
     const booksByTheirYears = {};
 
     docs.forEach(doc => {
         let lastPublishYear = Math.max(...doc.publish_year)
-        /* console.log(lastPublishYear) */
         if (!booksByTheirYears.hasOwnProperty(lastPublishYear)) {
             booksByTheirYears[lastPublishYear] = [doc]
-            console.log(doc, lastPublishYear )
         }
-        booksByTheirYears[lastPublishYear].push(doc);
+        else booksByTheirYears[lastPublishYear].push(doc);
     })
     return booksByTheirYears;
 }
