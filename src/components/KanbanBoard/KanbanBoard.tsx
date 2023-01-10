@@ -5,26 +5,31 @@ import { transformKanban } from "../../utils/utilities";
 import { getAuthor } from "../../pages/api";
 import { MoonLoader } from "react-spinners";
 import EmptyStateColumn from "../EmptyStateColumn/EmptyStateColumn";
+import { Book } from "../../../types/type";
 
 const KanbanBoard = () => {
-  const [authorId, setAuthorId] = useState("123456");
-  console.log(authorId);
+  const [authorId, setAuthorId] = useState<string>("OL23919A");
+  /* console.log(authorId); */
   const [transformedBook, setTransformedBook] = useState({});
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState<boolean>(true);
+  const [isEmptyState, setEmptyState] = useState<boolean>(false);
 
   async function getBooks() {
     const response = await getAuthor(authorId);
     const newDoc = transformKanban(response);
-    /* console.log(newDoc, "newDoc") */
+    console.log(newDoc, "newDoc");
+    if (Object.keys(newDoc).length === 0) {
+      setEmptyState(true);
+    }
     /* console.log(response, "pure"); */
     /* console.log(data); */
     setTransformedBook(newDoc);
     setLoading(false);
-
-    console.log(transformedBook, "abc");
+    console.log(newDoc, "newdoc")
   }
+  /* console.log(transformedBook, "abc"); */
 
-  function handleSubmit(e) {
+  function handleSubmit(e: React.MouseEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(!isLoading);
     getBooks();
@@ -61,19 +66,19 @@ const KanbanBoard = () => {
       {Object.keys(transformedBook).length !== 0 ? (
         <div className={styles.wrapper}>
           <div className={styles.columnsWrapper}>
-            {transformedBook &&
-              Object.keys(transformedBook).map((year, i) => (
-                <Columns
-                  key={i}
-                  year={year}
-                  transformedBook={Object.values(transformedBook)[i]}
-                />
-              ))}
+            {Object.keys(transformedBook).map((year, i) => (
+              <Columns
+                key={i}
+                year={year}
+                transformedBook={Object.values(transformedBook)[i]}
+              />
+            ))}
           </div>
         </div>
       ) : (
-        <EmptyStateColumn />
+        ""
       )}
+      {isEmptyState && <EmptyStateColumn />}
     </>
   );
 };
