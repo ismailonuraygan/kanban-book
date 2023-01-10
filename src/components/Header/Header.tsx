@@ -11,6 +11,7 @@ const Header = () => {
         width={96}
         height={48}
         alt="Logo of Brew Interactive"
+        priority={true}
         className={styles.logo}
       />
     </div>
