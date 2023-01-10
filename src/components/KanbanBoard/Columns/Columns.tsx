@@ -1,16 +1,16 @@
-import React from "react";
+import React, { FC } from "react";
 import Card from "./Card/Card";
 import styles from "./index.module.scss";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { ColumnsProps } from "../../../../types/type";
 
-const Columns = ({ transformedBook, year }) => {
-  const array = [1, 2, 3];
-  /* console.log(transformedBook) */
+const Columns: FC<ColumnsProps> = ({ transformedBook, year }) => {
+  console.log(transformedBook);
   return (
     <div className={styles.columnsWrapper}>
       <div
         className={styles.color}
-        style={{ backgroundColor: `#FA${year}` }}
+        style={{ backgroundColor: `#${year}` }}
       ></div>
       <div className={styles.columnsHeader}>
         <h1>{year}</h1>

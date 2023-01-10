@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import styles from "./index.module.scss";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import LayersOutlinedIcon from "@mui/icons-material/LayersOutlined";
 import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
+import { CardProps } from "../../../../../types/type";
 
-const Card = ({ book }) => {
-  const [open, setOpen] = useState(true);
+const Card: FC<CardProps> = ({ book }) => {
+  const [open, setOpen] = useState<boolean>(true);
   const handleClick = () => {
     setOpen(!open);
   };
@@ -16,9 +17,9 @@ const Card = ({ book }) => {
         <div className={open ? styles.titleOpen : styles.titleClose}>
           {book.title}
         </div>
-          <span className={open ? styles.iconOpen : styles.iconClose}>
-            <ExpandMoreOutlinedIcon />
-          </span>
+        <span className={open ? styles.iconOpen : styles.iconClose}>
+          <ExpandMoreOutlinedIcon />
+        </span>
       </button>
       <div className={open ? styles.bodyOpen : styles.body}>
         <div className={styles.content}>
