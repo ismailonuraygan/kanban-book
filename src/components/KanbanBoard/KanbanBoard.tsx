@@ -4,9 +4,10 @@ import styles from "./index.module.scss";
 import { transformKanban } from "../../utils/utilities";
 import { getAuthor } from "../../pages/api";
 import { MoonLoader } from "react-spinners";
+import EmptyStateColumn from "../EmptyStateColumn/EmptyStateColumn";
 
 const KanbanBoard = () => {
-  const [authorId, setAuthorId] = useState("OL26320A");
+  const [authorId, setAuthorId] = useState("123456");
   console.log(authorId);
   const [transformedBook, setTransformedBook] = useState({});
   const [isLoading, setLoading] = useState(true);
@@ -20,7 +21,7 @@ const KanbanBoard = () => {
     setTransformedBook(newDoc);
     setLoading(false);
 
-    /* console.log(transformedBook, "abc"); */
+    console.log(transformedBook, "abc");
   }
 
   function handleSubmit(e) {
@@ -57,18 +58,22 @@ const KanbanBoard = () => {
           </div>
         </form>
       </div>
-      <div className={styles.wrapper}>
-        <div className={styles.columnsWrapper}>
-          {transformedBook &&
-            Object.keys(transformedBook).map((year, i) => (
-              <Columns
-                key={i}
-                year={year}
-                transformedBook={Object.values(transformedBook)[i]}
-              />
-            ))}
+      {Object.keys(transformedBook).length !== 0 ? (
+        <div className={styles.wrapper}>
+          <div className={styles.columnsWrapper}>
+            {transformedBook &&
+              Object.keys(transformedBook).map((year, i) => (
+                <Columns
+                  key={i}
+                  year={year}
+                  transformedBook={Object.values(transformedBook)[i]}
+                />
+              ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <EmptyStateColumn />
+      )}
     </>
   );
 };
