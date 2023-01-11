@@ -10,7 +10,7 @@ const Card: FC<CardProps> = ({ book }) => {
   const handleClick = () => {
     setOpen(!open);
   };
-  /* console.log(book); */
+
   return (
     <div className={styles.cardWrapper}>
       <button className={styles.cardHeader} onClick={() => handleClick()}>

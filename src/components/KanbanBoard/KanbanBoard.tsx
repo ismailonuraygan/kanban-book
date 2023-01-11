@@ -10,26 +10,21 @@ import { ColumnsProps  } from "../../../types/type";
 
 const KanbanBoard = () => {
   const [authorId, setAuthorId] = useState<string>("OL23919A");
-  /* console.log(authorId); */
   const [transformedBook, setTransformedBook] = useState<ColumnsProps | {}>({});
   const [isLoading, setLoading] = useState<boolean>(true);
   const [isEmptyState, setEmptyState] = useState<boolean>(false);
-  console.log(process.env.NEXT_PUBLIC_BASE_URL);
+
 
   async function getBooks() {
     const response = await getAuthor(authorId);
     const newDoc = transformKanban(response);
-    /* console.log(newDoc, "newDoc"); */
     if (Object.keys(newDoc).length === 0) {
       setEmptyState(true);
     }
-    /* console.log(response, "pure"); */
-    /* console.log(data); */
     setTransformedBook(newDoc);
     setLoading(false);
-    /* console.log(newDoc, "newdoc") */
   }
-  console.log(transformedBook, "abc");
+
 
   function handleSubmit(e: React.MouseEvent<HTMLFormElement>) {
     e.preventDefault();
