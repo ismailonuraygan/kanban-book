@@ -5,19 +5,21 @@ import { transformKanban } from "../../utils/utilities";
 import { getAuthor } from "../../pages/api";
 import { MoonLoader } from "react-spinners";
 import EmptyStateColumn from "../EmptyStateColumn/EmptyStateColumn";
-import { Book } from "../../../types/type";
+import { ColumnsProps  } from "../../../types/type";
+
 
 const KanbanBoard = () => {
   const [authorId, setAuthorId] = useState<string>("OL23919A");
   /* console.log(authorId); */
-  const [transformedBook, setTransformedBook] = useState({});
+  const [transformedBook, setTransformedBook] = useState<ColumnsProps | {}>({});
   const [isLoading, setLoading] = useState<boolean>(true);
   const [isEmptyState, setEmptyState] = useState<boolean>(false);
+  console.log(process.env.NEXT_PUBLIC_BASE_URL);
 
   async function getBooks() {
     const response = await getAuthor(authorId);
     const newDoc = transformKanban(response);
-    console.log(newDoc, "newDoc");
+    /* console.log(newDoc, "newDoc"); */
     if (Object.keys(newDoc).length === 0) {
       setEmptyState(true);
     }
@@ -25,9 +27,9 @@ const KanbanBoard = () => {
     /* console.log(data); */
     setTransformedBook(newDoc);
     setLoading(false);
-    console.log(newDoc, "newdoc")
+    /* console.log(newDoc, "newdoc") */
   }
-  /* console.log(transformedBook, "abc"); */
+  console.log(transformedBook, "abc");
 
   function handleSubmit(e: React.MouseEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -66,11 +68,11 @@ const KanbanBoard = () => {
       {Object.keys(transformedBook).length !== 0 ? (
         <div className={styles.wrapper}>
           <div className={styles.columnsWrapper}>
-            {Object.keys(transformedBook).map((year, i) => (
+            {Object.entries(transformedBook).map(([year, books]) => (
               <Columns
-                key={i}
+                key={year}
                 year={year}
-                transformedBook={Object.values(transformedBook)[i]}
+                transformedBook={books}
               />
             ))}
           </div>
