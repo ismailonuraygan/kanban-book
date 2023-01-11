@@ -5,8 +5,7 @@ import { transformKanban } from "../../utils/utilities";
 import { getAuthor } from "../../pages/api";
 import { MoonLoader } from "react-spinners";
 import EmptyStateColumn from "../EmptyStateColumn/EmptyStateColumn";
-import { ColumnsProps  } from "../../../types/type";
-
+import { ColumnsProps } from "../../../types/type";
 
 const KanbanBoard = () => {
   const [authorId, setAuthorId] = useState<string>("OL23919A");
@@ -14,21 +13,17 @@ const KanbanBoard = () => {
   const [isLoading, setLoading] = useState<boolean>(true);
   const [isEmptyState, setEmptyState] = useState<boolean>(false);
 
-
   async function getBooks() {
     const response = await getAuthor(authorId);
     const newDoc = transformKanban(response);
     if (Object.keys(newDoc).length === 0) {
       setEmptyState(true);
-    }
-    else {
+    } else {
       setEmptyState(false);
     }
     setTransformedBook(newDoc);
     setLoading(false);
-
   }
-
 
   function handleSubmit(e: React.MouseEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -48,7 +43,10 @@ const KanbanBoard = () => {
   return (
     <>
       <div className={styles.formWrapper}>
-        <h1>Lorem Board</h1>
+        <h1>
+          {Object.keys(transformedBook).length !== 0 ?
+            Object.values(transformedBook)[0][0].author_name : "Lorem Board"}
+        </h1>
         <h4>books of</h4>
         <form onSubmit={handleSubmit} className={styles.form}>
           <input
@@ -68,11 +66,7 @@ const KanbanBoard = () => {
         <div className={styles.wrapper}>
           <div className={styles.columnsWrapper}>
             {Object.entries(transformedBook).map(([year, books]) => (
-              <Columns
-                key={year}
-                year={year}
-                transformedBook={books}
-              />
+              <Columns key={year} year={year} transformedBook={books} />
             ))}
           </div>
         </div>
