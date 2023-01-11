@@ -21,8 +21,12 @@ const KanbanBoard = () => {
     if (Object.keys(newDoc).length === 0) {
       setEmptyState(true);
     }
+    else {
+      setEmptyState(false);
+    }
     setTransformedBook(newDoc);
     setLoading(false);
+
   }
 
 
