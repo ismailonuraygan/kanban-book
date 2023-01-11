@@ -14,6 +14,10 @@ const nextConfig = {
     })
     return config
   },
+  env: {
+    NEXT_PUBLIC_BASE_URL: 'https://openlibrary.org',
+  },
+
 }
 
 module.exports = nextConfig
