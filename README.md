@@ -6,6 +6,9 @@
 
 - App doesn't have support for mobile users.
 
+### Live
+
+Deployed via vercel [https://kanban-book.vercel.app/](https://kanban-book.vercel.app/)
 
 ## To start a project
 
