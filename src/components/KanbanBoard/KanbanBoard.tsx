@@ -27,6 +27,7 @@ const KanbanBoard = () => {
 
   function handleSubmit(e: React.MouseEvent<HTMLFormElement>) {
     e.preventDefault();
+    if(authorId.length === 0) return;
     setLoading(!isLoading);
     getBooks();
     setLoading(!isLoading);
